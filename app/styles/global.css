@@ -1,0 +1,161 @@
+
+Now, let's create the global CSS file:
+
+```css project="Quiz App" file="app/styles/globals.css" type="code"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4A90E2;
+  --secondary: #50E3C2;
+  --accent: #F5A623;
+  --background: #F5F5F5;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground min-h-screen;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 max-w-7xl;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-lg p-6;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+}
+
+/* Chatbot styles */
+.chat-bubble {
+  @apply p-4 rounded-lg max-w-[80%];
+}
+
+.chat-bubble-user {
+  @apply bg-primary text-white ml-auto;
+}
+
+.chat-bubble-bot {
+  @apply bg-gray-100 text-gray-900;
+}
+
+/* Quiz interface styles */
+.quiz-option {
+  @apply w-full text-left p-4 rounded-lg border border-gray-200 hover:border-primary transition-colors;
+}
+
+.quiz-option-selected {
+  @apply border-primary bg-primary/10;
+}
+
+/* Progress indicators */
+.progress-bar {
+  @apply h-2 rounded-full bg-gray-200 overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full bg-primary transition-all duration-300;
+}
+
+/* Accessibility */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+/* Dark mode support */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+}
+
+.dark .card {
+  @apply bg-gray-800;
+}
+
+.dark .input {
+  @apply bg-gray-700 border-gray-600;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+
+/* Focus styles for better accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
+
+/* Loading states */
+.loading {
+  @apply animate-pulse bg-gray-200;
+}
+
+/* Form validation styles */
+.input-error {
+  @apply border-red-500 focus:ring-red-500;
+}
+
+.error-message {
+  @apply text-sm text-red-500 mt-1;
+}
+
+/* Success states */
+.success-message {
+  @apply text-sm text-green-500 mt-1;
+}
